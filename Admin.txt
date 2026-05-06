@@ -1,0 +1,336 @@
+Admin 
+
+Master Tables
+tblstates
+	StateId
+	StateName
+	Flag  default 0
+	InsertedAt  DateTime
+	UpdatedAt  DateTime
+	DeletedAt  DateTime
+	
+tblcities
+	CityId
+	CityName
+	StateId(FK)
+	
+tblqualifications
+	QualificationId
+	QualificationName
+	
+tblhobbies
+	HobbyId
+	HobbyName
+
+tblleadSources
+	LeadSourceId
+	LeadSourceName
+
+tblenquiryFors
+	EnquiryForId
+	EnquiryFor
+
+tbloragnizationDetails
+	OrganizationId
+	OrganizationName
+	Address
+	GSTNumber
+	PANNumber
+	TANNumber
+	Logo
+	LandlineNumber
+	MobileNumber
+	EmailAddress
+
+tblbranch_types
+	BranchTypeI
+	BranchType
+
+tblbranches
+	BranchId
+	BranchTypeId(FK)
+	CityId(FK)
+	Address
+	ContactNumber
+	EmailAddress
+
+tblcourse_status
+	CourseStatusId
+	CourseStatus - (Registered, Active, Break, Completed, Certified)
+
+
+------------------------------------------------------------------------------------------------------------------
+SuperUser
+	
+tblroles
+	RoleId
+	RoleName 
+
+tblemployees
+	Employeeid
+	EmployeeName
+	Gender
+	EmailAddress
+	MobileNumber
+	BirthDate
+	AlternateNumber
+	CityId(FK)
+	EmployeeCode varchar(20) unique not null,
+	Password
+	BranchId(FK)
+
+tblemployee_roles
+	EmployeeRoleId
+	EmployeeId(FK)
+	RoleId(FK)
+------------------------------------------------------------------------------------------------------------------
+
+Developer
+
+tbltraining_courses
+	Courseid
+	CourseName
+	FeesAmount
+	Gst
+
+tbltraining_topics
+	TopicId
+	TopicName	
+	pdfFile
+	
+
+tbltopic_contents
+	ContentId
+	TopicId(FK)
+	ContentName
+	video_file
+	ppts
+
+tblcontent_questions
+	QuestionId
+	ContentId(FK)
+	Question
+	Option1
+	Option2
+	Option3
+	Option4
+	CorrectOptionNumber
+
+
+tblcourse_topics
+	CourseTopicId
+	CourseId(FK)
+	TopicId(FK)
+
+------------------------------------------------------------------------------------------------------------------
+Counsellor
+tblleads
+	LeadId
+	CandidateName
+	QualificationId(FK)
+	EmailAddress
+	MobileNumber
+	CityId(FK)
+	LeadSourceId(FK)
+
+tblenquiries
+	EnquiryId
+	CandidateName
+	EnquiryDate
+	QualificationId(FK)
+	EnquiryFors
+	LeadSources
+	EmployeeId(FK)
+	InterestedTrainingMode - online, offline, hybrid
+	InterestedTopics
+	Status - Registered, Rejected, Hold
+
+tblenquiry_followups
+	FollowUpId
+	EnquiryId(FK)
+	FollowUpDate
+	EmployeeId(FK)
+	Details
+	NextFollowupDate
+
+------------------------------------------------------------------------------------------------------------------
+Accountant
+
+tblstudent_details
+	StudentId
+	StudentName
+	Gender
+	EmailAddress
+	MobileNumber
+	BirthDate
+	AlternateNumber
+	ParentName
+	ParentMobileNumber
+	CityId(FK)
+	PermenantIdentitficationNumber(SCTI0126001)
+	Password
+	BranchId(FK)
+
+tblstudent_qualifications
+	StudentQualificationId
+	StudentId(FK)
+	QualificationId(FK)
+	University
+	Medium
+	PassingYear
+	Percentage
+
+
+	
+tblstudent_registrations
+	RegistrationId
+	StudentId(FK)
+	RegistrationDate
+	EmployeeId(FK)
+	CourseId(FK)
+	Discount
+	StatusId(FK - tblcourse_status)
+
+
+tblstudent_payments
+	PaymentId
+	RegistrationId(FK)
+	PaymentDate
+	PaymentAmount
+	PaymentFor -  Registration , Installment
+	PaymentMode
+	PaymentDescription
+	EmployeeId(FK)
+
+
+--------------------------------------------------------------------------------------------------------------
+
+Group Leader
+
+tblbatches
+	BatchId
+	BatchName
+	TopicId(FK)
+	StartDate  
+	StartTime
+	EndTime
+	EmployeeId(FK)
+
+
+tblbatch_students
+	BatchStudentId
+	BatchId(FK)
+	RegistrationId(FK)
+
+tblbatch_schedule
+	ScheduleId
+	BatchId(FK)
+	ContentId(FK)
+	ExpectedDate
+	ActualDate
+	Remark	
+
+tblbatch_batch_attendance
+	AttendanceId
+	BatchId(FK)
+	StudentId(FK)
+	AttendanceDate
+	IsPresent  bit  - 0=Absent , 1-present
+
+tblbatch_exams
+	BatchExamId
+	BatchId(FK)
+	ExamDate
+	StartTime
+	EndTime
+	Status -  Scheduled , Attended, Not Attended
+
+tblbatch_exam_questions
+	ExamQuestionId
+	BatchExamId(FK)
+	QuestionId(FK)
+	SubmittedOptionNumber
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+ 
